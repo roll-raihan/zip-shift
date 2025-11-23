@@ -11,7 +11,7 @@ const Register = () => {
     }
 
     return (
-        <div className='border p-5 rounded-2xl'>
+        <div className='border p-5 rounded-2xl card-body'>
             <form onSubmit={handleSubmit(handleRegister)}>
                 <fieldset className="fieldset">
                     <label className="label">Email</label>
@@ -33,7 +33,7 @@ const Register = () => {
                         errors.password?.type === 'pattern' && <p className='text-red-500'>Password must have at least one uppercase, at least one lowercase, at least one number and at least one special character</p>
                     }
                     <div><a className="link link-hover">Forgot password?</a></div>
-                    <button className="btn btn-neutral mt-4">Login</button>
+                    <button className="btn btn-neutral mt-4">Register</button>
                 </fieldset>
                 <p>Already have an account? Please <Link to="/login" className='font-bold underline text-blue-500'>Login</Link></p>
             </form>
