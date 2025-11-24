@@ -18,9 +18,9 @@ const MerchantBanner = () => {
                     <p className='text-wrap my-3'>
                         We offer the lowest delivery charge with the highest value along with 100% safety of your product. Pathao courier delivers your parcels in every corner of Bangladesh right on time.
                     </p>
-                    <div className='flex justify-center items-center gap-5 my-3'>
+                    <div className='flex flex-col md:flex-row justify-center items-center gap-5 my-3'>
                         <button className='btn btn-primary text-black rounded-full'>Become a Merchant</button>
-                        <button className='btn btn-outline border border-primary rounded-full'>Earn with ZipShift Courier</button>
+                        <button className='btn btn-outline border-primary rounded-full text-wrap p-2'>Earn with ZipShift Courier</button>
                     </div>
                 </div>
                 <div className=''>

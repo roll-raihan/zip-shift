@@ -30,7 +30,7 @@ const ActiveServices = () => {
                         (obj, index) =>
                             <div
                                 key={index}
-                                className='flex justify-center items-center gap-5 p-10 bg-white rounded-2xl border-gray-500'>
+                                className='flex flex-col md:flex-row justify-center items-center gap-5 p-10 bg-white rounded-2xl border-gray-500'>
                                 <img src={obj.imgs} alt="" />
                                 <div>
                                     <h3 className='font-bold text-xl'>
