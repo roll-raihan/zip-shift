@@ -1,20 +1,35 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import Logo from '../../../components/logo/Logo';
+import UseAuth from '../../../hooks/UseAuth';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
+    const { user, logOut } = UseAuth();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast("Logged out successfully!", { position: "top-center" })
+            })
+            .catch((error) => {
+                console.log(error);
+                toast(error.message, { position: "top-center" })
+            })
+    }
 
     const links = <>
         <li><NavLink to="/service">Service</NavLink></li>
         <li><NavLink to="/coverage">Coverage</NavLink></li>
         <li><NavLink to="/about-us">About Us</NavLink></li>
         <li><NavLink to="/pricing">Pricing</NavLink></li>
-        <li><NavLink to="/blog">Blog</NavLink></li>
-        <li><NavLink to="/contact">Contact</NavLink></li>
+        {/* <li><NavLink to="/blog">Blog</NavLink></li> */}
+        <li><NavLink to="/be-a-rider">Be a Rider</NavLink></li>
     </>
 
     return (
         <div className="navbar bg-base-100 shadow-sm">
+            <ToastContainer></ToastContainer>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,8 +48,11 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Sign In</a>
+            <div className="navbar-end gap-2">
+                {
+                    user ? <a onClick={handleLogOut} className="btn">Log Out</a> : <Link to='/login' className="btn">Log In</Link>
+                }
+                <Link to='/be-a-rider' className="btn btn-primary text-black">Be a Rider</Link>
             </div>
         </div>
     );
