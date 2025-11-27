@@ -8,6 +8,11 @@ import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import BeARider from "../pages/Rider/BeARider";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import Story from "../components/AboutUsComponent/Story/Story";
+import Mission from "../components/AboutUsComponent/Mission/Mission";
+import Success from "../components/AboutUsComponent/Success/Success";
+import TermsAndConditions from "../components/AboutUsComponent/Terms&Condition/TermsAndCondiotins";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +38,28 @@ export const router = createBrowserRouter([
             {
                 path: '/*',
                 Component: ErrorPage
+            },
+            {
+                path: '/about-us',
+                Component: AboutUs,
+                children: [
+                    {
+                        path: '/about-us/story',
+                        Component: Story
+                    },
+                    {
+                        path: '/about-us/mission',
+                        Component: Mission
+                    },
+                    {
+                        path: '/about-us/success',
+                        Component: Success
+                    },
+                    {
+                        path: '/about-us/terms-and-conditions',
+                        Component: TermsAndConditions
+                    },
+                ]
             }
         ]
     },
@@ -47,7 +74,7 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 Component: Register
-            }
+            },
         ]
     }
 ]);
