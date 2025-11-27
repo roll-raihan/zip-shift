@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
+import '../AboutUs/AboutUs.css'
 
 const AboutUs = () => {
     return (
@@ -11,19 +12,19 @@ const AboutUs = () => {
                 </p>
             </div>
             <div className='border-t border-gray-300'></div>
-            <div className='flex gap-5  my-5'>
+            <div className='flex flex-col md:flex-row gap-5 my-5 text-gray-600'>
                 <NavLink
                     to='/about-us/story'
-                    className='font-semibold'>Story</NavLink>
+                    className='font-medium'>Story</NavLink>
                 <NavLink
                     to='/about-us/mission'
-                    className='font-semibold'>Mission</NavLink>
+                    className='font-medium'>Mission</NavLink>
                 <NavLink
                     to='/about-us/success'
-                    className='font-semibold'>Success</NavLink>
+                    className='font-medium'>Success</NavLink>
                 <NavLink
                     to='/about-us/terms-and-conditions'
-                    className='font-semibold'>Team & Others</NavLink>
+                    className='font-medium'>Team & Others</NavLink>
             </div>
             <Outlet></Outlet>
         </div>
