@@ -13,6 +13,7 @@ import Story from "../components/AboutUsComponent/Story/Story";
 import Mission from "../components/AboutUsComponent/Mission/Mission";
 import Success from "../components/AboutUsComponent/Success/Success";
 import TermsAndConditions from "../components/AboutUsComponent/Terms&Condition/TermsAndCondiotins";
+import SendParcel from "../pages/SendParcel/SendParcel";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,12 @@ export const router = createBrowserRouter([
                 path: '/be-a-rider',
                 element: <PrivateRoute>
                     <BeARider></BeARider>
+                </PrivateRoute>
+            },
+            {
+                path: '/send-parcel',
+                element: <PrivateRoute>
+                    <SendParcel></SendParcel>
                 </PrivateRoute>
             },
             {
