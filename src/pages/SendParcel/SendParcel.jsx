@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const SendParcel = () => {
 
@@ -43,7 +44,25 @@ const SendParcel = () => {
                 cost = minCharge + extraCharge;
             }
         }
-        console.log('cost',cost);
+        // console.log('cost', cost);
+        Swal.fire({
+            title: "Agree with the cost?",
+            text: `You will be charged ${cost} Tk.`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "I agree!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                // Swal.fire({
+                //     title: "Saved",
+                //     text: "Your order is on card",
+                //     icon: "success"
+                // });
+            }
+        });
     }
 
     return (
