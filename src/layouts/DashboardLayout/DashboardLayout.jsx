@@ -35,7 +35,7 @@ const DashboardLayout = () => {
 
                         {/* my list */}
                         <li>
-                            <NavLink to='/dashboard/my-parcels' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Parcels">
+                            <NavLink to='/dashboard/my-parcels' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My parcels">
                             <FaGift />
                             <span className="is-drawer-close:hidden">My Parcels</span>
                             </NavLink>
