@@ -34,7 +34,9 @@ export const router = createBrowserRouter([
                 path: '/send-parcel',
                 element: <PrivateRoute>
                     <SendParcel></SendParcel>
-                </PrivateRoute>
+                </PrivateRoute>,
+                loader: () => fetch('/warehouses.json'),
+                hydrateFallbackElement: <span className="loading loading-infinity loading-xl"></span>
             },
             {
                 path: '/coverage',
