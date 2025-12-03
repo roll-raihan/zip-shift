@@ -55,8 +55,8 @@ const MyParcels = () => {
     }
 
     return (
-        <div>
-            All my parcels: {parcels.length}
+        <div className='m-4 p-6 rounded-2xl bg-white'>
+            <h2 className='text-3xl font-bold text-secondary my-5'>All my parcels: ({parcels.length})</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
