@@ -91,7 +91,7 @@ const SendParcel = () => {
     }
 
     return (
-        <div className='my-10 bg-white rounded-2xl overflow-hidden mt-10 mb-20 m-5 p-10'>
+        <div className='my-5 bg-white rounded-2xl overflow-hidden mb-20 m-5 p-10'>
             <h2 className="text-4xl font-bold my-5">Send A Parcel</h2>
             <h4 className='font-bold'>Enter your parcel details</h4>
             <form onSubmit={handleSubmit(handleSendParcel)} className='my-5 text-black'>

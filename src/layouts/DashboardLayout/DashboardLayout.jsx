@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGift, FaRegCreditCard } from 'react-icons/fa';
+import { FaGift, FaMotorcycle, FaRegCreditCard } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 
 const DashboardLayout = () => {
@@ -37,16 +37,22 @@ const DashboardLayout = () => {
                         {/* my-parcel */}
                         <li>
                             <NavLink to='/dashboard/my-parcels' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My parcels">
-                            <FaGift />
-                            <span className="is-drawer-close:hidden">My Parcels</span>
+                                <FaGift />
+                                <span className="is-drawer-close:hidden">My Parcels</span>
                             </NavLink>
                         </li>
-
                         {/* payment-history */}
                         <li>
                             <NavLink to='/dashboard/payment-history' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment history">
-                            <FaRegCreditCard />
-                            <span className="is-drawer-close:hidden">Payment History</span>
+                                <FaRegCreditCard />
+                                <span className="is-drawer-close:hidden">Payment History</span>
+                            </NavLink>
+                        </li>
+                        {/* approve riders */}
+                        <li>
+                            <NavLink to='/dashboard/approve-riders' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Approve riders">
+                                <FaMotorcycle />
+                                <span className="is-drawer-close:hidden">Approve Riders</span>
                             </NavLink>
                         </li>
 
