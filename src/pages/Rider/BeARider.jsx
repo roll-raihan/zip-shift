@@ -4,6 +4,7 @@ import UseAxiosSecure from '../../hooks/UseAxiosSecure';
 import UseAuth from '../../hooks/UseAuth';
 import { useLoaderData } from 'react-router';
 import agentPending from '../../assets/agent-pending.png'
+import Swal from 'sweetalert2';
 
 const BeARider = () => {
 
@@ -35,6 +36,18 @@ const BeARider = () => {
 
     const handleRiderApplication = data => {
         console.log(data);
+        axiosSecure.post('/riders', data)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your data submitted successfully. We will reach to you in 15 days.",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                };
+            })
     }
 
     return (
@@ -112,7 +125,7 @@ const BeARider = () => {
                             <img src={agentPending} alt="" />
                         </div>
                     </div>
-                    <input type="submit" className='btn btn-primary text-black font-bold my-5' value="Submit" />
+                    <input type="submit" className='btn btn-primary text-black font-bold my-5' value="Apply as a Rider" />
                 </form>
             </div>
         </div>
