@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
 import { FaUserShield } from 'react-icons/fa';
 import { FiShieldOff } from "react-icons/fi";
@@ -8,10 +8,11 @@ import Swal from 'sweetalert2';
 const UsersManagement = () => {
 
     const axiosSecure = UseAxiosSecure();
+    const [searchText, setSearchText] = useState('');
     const { refetch, data: users = [] } = useQuery({
-        queryKey: ['users'],
+        queryKey: ['users', searchText],
         queryFn: async () => {
-            const res = await axiosSecure.get(`users`);
+            const res = await axiosSecure.get(`users?searchText=${searchText}`);
             return res.data;
         }
     })
@@ -77,9 +78,30 @@ const UsersManagement = () => {
 
     return (
         <div className='my-5 bg-white rounded-2xl overflow-hidden mb-20 m-5 p-10'>
-            <h2 className="text-4xl font-bold text-secondary">Users Management : {users.length}</h2>
+            <h2 className="text-4xl font-bold text-secondary my-5">Users Management : {users.length}</h2>
 
-            <div className="overflow-x-auto">
+            {/* search field */}
+            <label className="input my-5">
+                <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="2.5"
+                        fill="none"
+                        stroke="currentColor"
+                    >
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                </svg>
+                <input
+                    onChange={(e) => setSearchText(e.target.value)}
+                    type="search"
+                    required
+                    placeholder="Search user" />
+            </label>
+
+            <div className="overflow-x-auto my-5">
                 <table className="table">
                     {/* head */}
                     <thead>
