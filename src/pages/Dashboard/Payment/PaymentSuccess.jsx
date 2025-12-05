@@ -26,8 +26,8 @@ const PaymentSuccess = () => {
     }, [sessionID, axiosSecure])
 
     return (
-        <div>
-            <h2 className="text-4xl">Payment Successful</h2>
+        <div className='my-5 bg-white rounded-2xl overflow-hidden mb-20 m-5 p-10'>
+            <h2 className="text-4xl my-4">Payment Successful</h2>
             <p>Your Transaction id: {paymentInfo.transactionId}</p>
             <p>Your Parcel Tracking id: {paymentInfo.trackingId}</p>
         </div>
