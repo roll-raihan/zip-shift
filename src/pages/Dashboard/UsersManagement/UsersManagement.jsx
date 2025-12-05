@@ -18,36 +18,61 @@ const UsersManagement = () => {
 
     const handleMarkUserToAdmin = user => {
         const roleInfo = { role: 'admin' };
-        axiosSecure.patch(`/users/${user._id}`, roleInfo)
-            .then(res => {
-                if (res.data.modifiedCount) {
-                    refetch();
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: `${user.displayName} is marked as an admin.`,
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                }
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You want to mark "${user.displayName}" as an admin!`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, mark Admin!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/users/${user._id}`, roleInfo)
+                    .then(res => {
+                        if (res.data.modifiedCount) {
+                            refetch();
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: `${user.displayName} is marked as an admin.`,
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                        }
+                    })
+            }
+        });
+
     }
 
     const handleRemoveAdmin = user => {
         const roleInfo = { role: 'user' };
-        axiosSecure.patch(`/users/${user._id}`, roleInfo)
-            .then(res => {
-                if (res.data.modifiedCount) {
-                    refetch();
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: `${user.displayName} is removed from admin.`,
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                }
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            text: `You want to remove "${user.displayName}" from admin!`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, remove!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/users/${user._id}`, roleInfo)
+                    .then(res => {
+                        if (res.data.modifiedCount) {
+                            refetch();
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: `${user.displayName} is removed from admin.`,
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                        }
+                    })
+            }
+        });
     }
 
     return (
