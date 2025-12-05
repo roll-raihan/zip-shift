@@ -56,7 +56,8 @@ const ApproveRiders = () => {
                             <th></th>
                             <th>Name</th>
                             <th>District</th>
-                            <th>Status</th>
+                            <th>Application Status</th>
+                            <th>Work Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -69,6 +70,7 @@ const ApproveRiders = () => {
                                 <td>
                                     <p className={`${rider.status === 'approved' ? 'text-green-800' : 'text-red-800'}`}>{rider.status}</p>
                                 </td>
+                                <td>{rider.workStatus}</td>
                                 <td>
                                     <button
                                         onClick={() => handleRiderApproval(rider)}
