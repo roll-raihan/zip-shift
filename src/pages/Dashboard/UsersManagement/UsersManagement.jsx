@@ -1,17 +1,54 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import UseAxiosSecure from '../../../hooks/UseAxiosSecure';
+import { FaUserShield } from 'react-icons/fa';
+import { FiShieldOff } from "react-icons/fi";
+import Swal from 'sweetalert2';
 
 const UsersManagement = () => {
 
     const axiosSecure = UseAxiosSecure();
-    const { data: users = [] } = useQuery({
+    const { refetch, data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get(`users`);
             return res.data;
         }
     })
+
+    const handleMarkUserToAdmin = user => {
+        const roleInfo = { role: 'admin' };
+        axiosSecure.patch(`/users/${user._id}`, roleInfo)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${user.displayName} is marked as an admin.`,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+            })
+    }
+
+    const handleRemoveAdmin = user => {
+        const roleInfo = { role: 'user' };
+        axiosSecure.patch(`/users/${user._id}`, roleInfo)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: `${user.displayName} is removed from admin.`,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+            })
+    }
 
     return (
         <div className='my-5 bg-white rounded-2xl overflow-hidden mb-20 m-5 p-10'>
@@ -25,10 +62,10 @@ const UsersManagement = () => {
                             <th>
                                 #
                             </th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Admin</th>
-                            <th>Actions</th>
+                            <th>User</th>
+                            <th>Role</th>
+                            <th>Admin Action</th>
+                            <th>Other Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,13 +90,25 @@ const UsersManagement = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    Zemlak, Daniel and Leannon
-                                    <br />
-                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                    {user.role}
                                 </td>
-                                <td>Purple</td>
+                                <td>
+                                    {
+                                        user.role === 'admin' ?
+                                            <button
+                                                onClick={() => handleRemoveAdmin(user)}
+                                                className='btn bg-red-500'>
+                                                <FiShieldOff />
+                                            </button>
+                                            : <button
+                                                onClick={() => handleMarkUserToAdmin(user)}
+                                                className='btn bg-green-500'>
+                                                <FaUserShield></FaUserShield>
+                                            </button>
+                                    }
+                                </td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">details</button>
+                                    <button className="btn btn-ghost btn-xs">View</button>
                                 </th>
                             </tr>)
                         }
