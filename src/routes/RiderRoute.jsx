@@ -12,7 +12,7 @@ const RiderRoute = ({ children }) => {
         </div>
     }
 
-    if (role !== 'admin') {
+    if (role !== 'rider') {
         return <div className='flex justify-center items-center my-5 bg-white rounded-2xl overflow-hidden mb-20 m-5 p-10'>
             <p className='text-3xl'>You are not allowed to visit this page!</p>
         </div>
