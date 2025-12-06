@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGift, FaMotorcycle, FaRegCreditCard, FaUser } from 'react-icons/fa';
+import { FaGift, FaMotorcycle, FaRegCreditCard, FaTasks, FaUser } from 'react-icons/fa';
 import { RiEBikeFill } from "react-icons/ri";;
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../../hooks/useRole';
@@ -54,6 +54,19 @@ const DashboardLayout = () => {
                             </NavLink>
                         </li>
                         {
+                            // rider only dashboard
+                            role === 'rider' && <>
+                                {/* assigned deliveries */}
+                                <li>
+                                    <NavLink to='/dashboard/assigned-deliveries' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assigned Deliveries">
+                                        <FaTasks></FaTasks>
+                                        <span className="is-drawer-close:hidden">Assigned Deliveries</span>
+                                    </NavLink>
+                                </li>
+                            </>
+                        }
+                        {
+                            // admin only dashboard
                             role === 'admin' && <>
                                 {/* approve riders */}
                                 <li>
